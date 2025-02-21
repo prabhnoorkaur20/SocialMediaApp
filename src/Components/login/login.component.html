@@ -1,11 +1,82 @@
+<!-- <div class="login-container">
+  <h2>Login</h2>
+  <form (submit)="loginUser()">
+    <input
+      type="email"
+      [(ngModel)]="email"
+      name="Email"
+      placeholder="Email"
+      required
+    />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="Password"
+      placeholder="Password"
+      required
+    />
+    <button type="submit">Login</button>
+  </form>
+  <a routerLink="/register">Create an account</a>
+  <br />
+  <a routerLink="/forgot-password">Forgot Password?</a>
+</div> -->
 <div class="login-container">
+  <div class="login-card">
     <h2>Login</h2>
-    <form (submit)="loginUser()">
-      <input type="email" [(ngModel)]="email" name="Email" placeholder="Email" required />
-      <input type="password" [(ngModel)]="password" name="Password" placeholder="Password" required />
-      <button type="submit">Login</button>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" />
+        <div
+          *ngIf="
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          "
+          class="error-message"
+        >
+          Please enter a valid email address.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            formControlName="password"
+          />
+          <button
+            type="button"
+            class="password-toggle"
+            (click)="togglePassword()"
+          >
+            <i [class]="showPassword ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
+          </button>
+        </div>
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          class="error-message"
+        >
+          Password is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="remember-me">
+          <input type="checkbox" formControlName="rememberMe" /> Remember Me
+        </label>
+      </div>
+      <button type="submit" [disabled]="loginForm.invalid" class="login-button">
+        <span *ngIf="loading">Loading...</span>
+        <span *ngIf="!loading">Login</span>
+      </button>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <div class="footer-links">
+        <a routerLink="/register">Create an account</a>
+        <a routerLink="/forgot-password">Forgot Password?</a>
+      </div>
     </form>
-    <a routerLink="/register">Create an account</a>
-    <a routerLink="/forgot-password">Forgot Password?</a>
   </div>
-  
+</div>

@@ -1,39 +1,39 @@
-// Gradient background
-.bg-gradient {
-    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+.custom-navbar {
+  background: linear-gradient(135deg, #1a2a6c, #2ec8ce); /* Dark blue to teal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: white !important;
+}
+
+.nav-link {
+  color: white !important;
+  margin: 0 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ddd !important;
   }
-  
-  // Navbar Brand (Logo)
-  .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-  }
-  
-  // Navbar Links
-  .navbar-nav {
-    .nav-link {
-      font-size: 18px;
-      color: black !important;
-      transition: 0.3s;
-  
-      &:hover {
-        color: #ffeb3b !important;
-      }
-    }
-  
-    // Logout Button
-    .btn-warning {
-      border-radius: 20px;
-      font-weight: bold;
-    }
-  }
-  
-  // Mobile Navbar Button
-  .navbar-toggler {
-    border: none;
-    &:focus {
-      box-shadow: none;
+
+  &.logout-btn {
+    background-color: #ffc107; /* Bootstrap warning color */
+    color: #333 !important;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+
+    &:hover {
+      background-color: #e0a800;
     }
   }
-  
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}

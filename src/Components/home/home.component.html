@@ -1,4 +1,80 @@
-<div class="home-container">
+<!-- <div class="home-container">
   <h2>Home Feed</h2>
   <app-post-list></app-post-list>
+</div> -->
+<div class="home-container">
+  <div class="sidebar">
+    <div class="profile-summary">
+      <img [src]="avatarUrl" alt="User Avatar" class="avatar" />
+      <h4>{{ username }}</h4>
+      <a routerLink="/profile">View Profile</a>
+    </div>
+    <div class="quick-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/messages">Messages</a></li>
+        <li><a routerLink="/notifications">Notifications</a></li>
+      </ul>
+    </div>
+    <div class="trending">
+      <h3>Trending</h3>
+      <ul>
+        <li><a href="#">#Topic1</a></li>
+        <li><a href="#">#Topic2</a></li>
+        <li><a href="#">#Topic3</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="feed">
+    <h3>Feed</h3>
+    <div *ngFor="let post of posts" class="post">
+      <div class="post-header">
+        <h4>User {{ post.userId }}</h4>
+      </div>
+      <p>{{ post.body }}</p>
+      <img
+        *ngIf="post.imageUrl"
+        [src]="post.imageUrl"
+        alt="Post Image"
+        class="post-image"
+      />
+      <video
+        *ngIf="post.videoUrl"
+        [src]="post.videoUrl"
+        controls
+        class="post-video"
+      ></video>
+      <div class="post-actions">
+        <button (click)="toggleLike(post)">Like ({{ post.likes }})</button>
+      </div>
+      <div class="comments">
+        <div *ngFor="let comment of post.comments">
+          <p>{{ comment }}</p>
+        </div>
+      </div>
+      <div class="comment-input">
+        <input
+          type="text"
+          [(ngModel)]="post.newComment"
+          placeholder="Add a comment..."
+        />
+        <button (click)="addComment(post)">Post</button>
+      </div>
+    </div>
+  </div>
+  <div class="home-container">
+    <div class="right-sidebar">
+      <h3>People You May Know</h3>
+      <div *ngFor="let user of suggestedUsers" class="suggested-user">
+        <img
+          [src]="user.avatarUrl"
+          alt="Suggested User Avatar"
+          class="suggested-avatar"
+        />
+        <h4>{{ user.username }}</h4>
+        <button>Follow</button>
+      </div>
+    </div>
+  </div>
 </div>

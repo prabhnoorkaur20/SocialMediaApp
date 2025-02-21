@@ -12,5 +12,6 @@ export const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'home', component: HomeComponent },
   //{ path: 'profile', component: Profile },
-  { path: '**', redirectTo: 'login' } // Redirect unknown paths to login
+  // { path: '**', redirectTo: 'login' } // Redirect unknown paths to login
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
