@@ -4,20 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent {
+export class RegisterComponent {
+  name: string = '';
   email: string = '';
   password: string = '';
 
   constructor(private router: Router) {}
 
-  loginUser() {
-    console.log('Logging in with:', this.email, this.password);
-    this.router.navigate(['/home']); // Redirect to home after login
+  registerUser() {
+    console.log('Registering:', this.name, this.email, this.password);
+    this.router.navigate(['/home']); // Redirect to home after signup
   }
 }

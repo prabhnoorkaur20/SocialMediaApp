@@ -1,0 +1,5 @@
+<div class="comments">
+  <p *ngFor="let comment of comments">💬 {{ comment }}</p>
+  <input type="text" [(ngModel)]="newComment" name="comment" placeholder="Add a comment..." />
+  <button (click)="addComment()">Post</button>
+</div>

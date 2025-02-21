@@ -4,20 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-forgot-password',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.css']
 })
-export class LoginComponent {
+export class ForgotPasswordComponent {
   email: string = '';
-  password: string = '';
 
   constructor(private router: Router) {}
 
-  loginUser() {
-    console.log('Logging in with:', this.email, this.password);
-    this.router.navigate(['/home']); // Redirect to home after login
+  resetPassword() {
+    console.log('Reset link sent to:', this.email);
+    alert('Password reset link sent!');
   }
 }

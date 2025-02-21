@@ -1,0 +1,39 @@
+// Gradient background
+.bg-gradient {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  }
+  
+  // Navbar Brand (Logo)
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  // Navbar Links
+  .navbar-nav {
+    .nav-link {
+      font-size: 18px;
+      color: black !important;
+      transition: 0.3s;
+  
+      &:hover {
+        color: #ffeb3b !important;
+      }
+    }
+  
+    // Logout Button
+    .btn-warning {
+      border-radius: 20px;
+      font-weight: bold;
+    }
+  }
+  
+  // Mobile Navbar Button
+  .navbar-toggler {
+    border: none;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  
