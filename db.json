@@ -1,0 +1,17 @@
+{
+    "users": [
+      { "id": 1, "username": "Alice Johnson", "followers": [] },
+      { "id": 2, "username": "Bob Smith", "followers": [] },
+      { "id": 3, "username": "Charlie Brown", "followers": [] },
+      { "id": 4, "username": "Diana White", "followers": [] },
+      { "id": 5, "username": "Ethan Davis", "followers": [] },
+      { "id": 6, "username": "Fiona Wilson", "followers": [] }
+    ],
+    "posts": [
+      { "id": 1, "userId": 1, "body": "Excited about #Topic1! Having a great day." },
+      { "id": 2, "userId": 2, "body": "Just finished reading a book about #Topic2. Highly recommended!" },
+      { "id": 3, "userId": 3, "body": "Check out this amazing photo! #Topic3" },
+      { "id": 4, "userId": 1, "body": "Another update on #Topic1. Stay tuned for more." },
+      { "id": 5, "userId": 2, "body": "Learning new things about #Topic2. It's fascinating!" }
+    ]
+  }

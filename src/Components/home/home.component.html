@@ -20,9 +20,11 @@
     <div class="trending">
       <h3>Trending</h3>
       <ul>
-        <li><a href="#">#Topic1</a></li>
-        <li><a href="#">#Topic2</a></li>
-        <li><a href="#">#Topic3</a></li>
+        <li *ngFor="let topic of trendingTopics">
+          <a (click)="navigateToTopic(topic)" style="cursor: pointer">{{
+            topic
+          }}</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -30,7 +32,7 @@
     <h3>Feed</h3>
     <div *ngFor="let post of posts" class="post">
       <div class="post-header">
-        <h4>User {{ post.userId }}</h4>
+        <h4>{{ post.username }}</h4>
       </div>
       <p>{{ post.body }}</p>
       <img
@@ -50,7 +52,9 @@
       </div>
       <div class="comments">
         <div *ngFor="let comment of post.comments">
-          <p>{{ comment }}</p>
+          <p>
+            <strong>{{ comment.username }}:</strong> {{ comment.text }}
+          </p>
         </div>
       </div>
       <div class="comment-input">
@@ -59,7 +63,67 @@
           [(ngModel)]="post.newComment"
           placeholder="Add a comment..."
         />
-        <button (click)="addComment(post)">Post</button>
+        <button [disabled]="!usersLoaded" (click)="addComment(post)">
+          Post
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="filteredPosts.length > 0">
+      <h3>Filtered Posts</h3>
+      <div *ngFor="let post of filteredPosts" class="post">
+        <div class="post-header">
+          <h4>{{ post.username }}</h4>
+        </div>
+        <p>{{ post.body }}</p>
+        <img
+          *ngIf="post.imageUrl"
+          [src]="post.imageUrl"
+          alt="Post Image"
+          class="post-image"
+        />
+        <video
+          *ngIf="post.videoUrl"
+          [src]="post.videoUrl"
+          controls
+          class="post-video"
+        ></video>
+        <div class="post-actions">
+          <button (click)="toggleLike(post)">Like ({{ post.likes }})</button>
+        </div>
+        <div class="comments">
+          <div *ngFor="let comment of post.comments">
+            <p>
+              <strong>{{ comment.username }}:</strong> {{ comment.text }}
+            </p>
+          </div>
+        </div>
+        <div class="comment-input">
+          <input
+            type="text"
+            [(ngModel)]="post.newComment"
+            placeholder="Add a comment..."
+          />
+          <button [disabled]="!usersLoaded" (click)="addComment(post)">
+            Post
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="filteredTips.length > 0">
+      <h3>Filtered Tips</h3>
+      <div *ngFor="let tip of filteredTips" class="tip">
+        <h4>{{ tip.title }}</h4>
+        <p>{{ tip.body }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="filteredGeneralData.length > 0">
+      <h3>Filtered General Data</h3>
+      <div *ngFor="let data of filteredGeneralData" class="general-data">
+        <h4>{{ data.title }}</h4>
+        <p>{{ data.body }}</p>
       </div>
     </div>
   </div>
